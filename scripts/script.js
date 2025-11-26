@@ -181,16 +181,6 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
-            
-            // Animate skill progress bars
-            if (entry.target.classList.contains('skill-card')) {
-                const progressBar = entry.target.querySelector('.skill-progress');
-                if (progressBar) {
-                    const progress = progressBar.getAttribute('data-progress');
-                    progressBar.style.setProperty('--progress-width', progress + '%');
-                    progressBar.style.width = progress + '%';
-                }
-            }
         }
     });
 }, observerOptions);
@@ -202,9 +192,15 @@ animateOnScroll.forEach(el => {
     observer.observe(el);
 });
 
-// Observe skill cards separately for progress bar animation
+// Set up skill card progress bars to animate only on hover
 const skillCards = document.querySelectorAll('.skill-card');
-skillCards.forEach(card => observer.observe(card));
+skillCards.forEach(card => {
+    const progressBar = card.querySelector('.skill-progress');
+    if (progressBar) {
+        const progress = progressBar.getAttribute('data-progress');
+        progressBar.style.setProperty('--progress-width', progress + '%');
+    }
+});
 
 // ===========================
 // Form Validation & Submission
