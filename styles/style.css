@@ -414,6 +414,40 @@ button {
     margin-bottom: 4rem;
 }
 
+.hero-profile-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero-profile-image {
+    flex: 0 0 50%;
+    max-width: 400px;
+}
+
+.hero-profile-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 20px 60px rgba(108, 99, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-profile-image img:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(108, 99, 255, 0.4);
+}
+
+.hero-text {
+    flex: 0 0 50%;
+    text-align: left;
+}
+
 .greeting {
     font-size: 1.3rem;
     color: var(--text-secondary);
@@ -1623,6 +1657,21 @@ button {
 
 /* Mobile */
 @media (max-width: 600px) {
+    .hero-profile-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .hero-profile-image {
+        flex: 0 0 auto;
+        max-width: 250px;
+    }
+    
+    .hero-text {
+        flex: 0 0 auto;
+        text-align: center;
+    }
+    
     .greeting {
         font-size: 1rem;
     }
